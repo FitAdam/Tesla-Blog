@@ -27,7 +27,9 @@ def new_post(request):
         # POST data submitted; process data.
         form = BlogPostForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            new_post = form.save(commit=False)
+            new_post.owner = request.user
+            new_post.save()
             return redirect('blogs:index')
     # Display a blank or invalid form.
     context = {'form': form}
