@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from .models import BlogPost
 from .forms import BlogPostForm
@@ -15,6 +17,7 @@ def post(request, post_id):
     context = {'post': post}
     return render(request, 'blogs/post.html', context)
 
+@login_required
 def new_post(request):
     """Add a new post"""
     if request.method != 'POST':
@@ -30,12 +33,15 @@ def new_post(request):
     context = {'form': form}
     return render(request, 'blogs/new_post.html', context)
 
+@login_required
 def edit_post(request, post_id):
     """Edit an existing post."""
     post = BlogPost.objects.get(id=post_id)
     title = post.title
     text = post.text
 
+    check_post_owner(request, post)
+    
     if request.method != 'POST':
         # Initial request; pre-fill form with the current entry.
         form = BlogPostForm(instance=post)
@@ -48,3 +54,9 @@ def edit_post(request, post_id):
 
     context = {'form': form, 'post': post}
     return render(request, 'blogs/edit_post.html', context)
+
+
+def check_post_owner(request, post):
+    """ Check if the topic belongs to the current user."""
+    if post.owner != request.user:
+        raise Http404

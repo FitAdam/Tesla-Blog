@@ -2,7 +2,7 @@
 
 {% block content %}
  <h2>Post</h2>
-  <a href="{% url 'blogs:new_post' %}"> Add a new post</a>
+      
  <ul>
      {% for post in posts %}
        <p>{{ post.date_added }}</p>

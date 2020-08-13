@@ -7,9 +7,10 @@
     
  <p>{{ post.date_added }}</p>
  <p>{{ post.text }}</p>
+ {% if user.is_authenticated %}
  <p>
-     <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
+    <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
  </p>
- 
+ {% endif %}
  
 {% endblock content %}
