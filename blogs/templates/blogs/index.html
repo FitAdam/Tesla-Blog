@@ -1,15 +1,30 @@
 {% extends "blogs/base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+
+
+{% block page_header %}
+<h1>Last Posts</h1>
+{% endblock page_header %}
 
 {% block content %}
- <h2>Post</h2>
-      
- <ul>
-     {% for post in posts %}
-       <p>{{ post.date_added }}</p>
-       <h3><a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a></h3>
-     {% empty %}
-       <li>No posts have been added yet.</li>
-     {% endfor %}
- </ul>
- 
+
+{% for post in posts %}
+<div class="card">
+
+  <h5 class="card-header text-white bg-dark mb-3">{{ post.date_added }}</h5>
+  <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a></h3>
+  </div>
+
+
+
+  {% empty %}
+  <li>No posts have been added yet.</li>
+  {% endfor %}
+
+</div>
+
+
+
 {% endblock content %}
