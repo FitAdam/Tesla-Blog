@@ -25,7 +25,7 @@ def new_post(request):
         form = BlogPostForm()
     else:
         # POST data submitted; process data.
-        form = BlogPostForm(data=request.POST)
+        form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_post = form.save(commit=False)
             new_post.owner = request.user
@@ -49,7 +49,7 @@ def edit_post(request, post_id):
         form = BlogPostForm(instance=post)
     else:
         # POST data submitted; process data.
-        form = BlogPostForm(instance=post, data=request.POST)
+        form = BlogPostForm(instance=post, data= request.POST, files= request.FILES)
         if form.is_valid():
             form.save()
             return redirect('blogs:post', post_id=post.id)

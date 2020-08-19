@@ -7,13 +7,17 @@
 
 {% block content %}
   
-<form action="{% url 'blogs:new_post' %}" method="post">
+<form action="{% url 'blogs:new_post' %}" method="post" enctype="multipart/form-data">
    {% csrf_token %}
    {% bootstrap_form form %}
     {% buttons %}
       <button name="submit" class="btn btn-primary">Add post</button>
     {% endbuttons %}
 </form>
+
+{% if uploaded_file_url %}
+<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}
 
 
 {% endblock content %}
