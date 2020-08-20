@@ -13,7 +13,7 @@ def index(request):
 
 def post(request, post_id):
     """Show a post."""
-    post = get_object_or_404(post, id=post_id)
+    post = get_object_or_404(BlogPost, id=post_id)
     context = {'post': post}
     return render(request, 'blogs/post.html', context)
 
