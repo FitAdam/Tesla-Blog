@@ -19,7 +19,7 @@ import django_heroku
 
 import os
 
-SECRET_KEY = "LKJIU9183hsaf'';1913563*(&91sfhdSFDJLWIF"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 "os.getenv('SECRET_KEY', 'Optional default value')"
