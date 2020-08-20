@@ -38,7 +38,7 @@ def new_post(request):
 @login_required
 def edit_post(request, post_id):
     """Edit an existing post."""
-    post = BlogPost.objects.get(id=post_id)
+    post = get_object_or_404(BlogPost, id=post_id)
     title = post.title
     text = post.text
 
