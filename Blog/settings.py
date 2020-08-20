@@ -19,10 +19,7 @@ import django_heroku
 
 import os
 
-SECRET_KEY = "LKJIU9183hsaf'';1913563*(&91sfhdSFDJLWIF"
-
-
-#"os.getenv('SECRET_KEY', 'Optional default value')"
+SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
