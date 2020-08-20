@@ -143,9 +143,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
-#STATICFILES_DIRS = (
- #os.path.join(BASE_DIR, 'blogs/static'),
-#)
+STATICFILES_DIRS = (
+ os.path.join(BASE_DIR, 'blogs/static'),
+)
 
 # Heroku settings.
 
@@ -154,7 +154,7 @@ django_heroku.settings(locals())
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if os.environ.get('DEBUG') == 'TRUE':
     DEBUG = True
