@@ -9,22 +9,57 @@
 
 {% block content %}
 
-{% for post in posts %}
-<div class="card">
-
-  <h5 class="card-header text-white bg-dark mb-3">{{ post.date_added }}</h5>
-  <div class="card-body">
-    <h5 class="card-title"><a href="{% url 'blogs:post' post.id %}">{{ post.title }}</a></h3>
+<div class="card-deck mb-3">
+  <div class="card text-white bg-dark" style="width: 18rem;">
+    <a href="https://www.amazon.co.uk/gp/product/B081V2P7FR/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=fitadam-21&linkId=c994037db486851d7495d45fa2d43151&language=en_GB" target="_blank"><img class="card-img-top"  src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B081V2P7FR&Format=_SL250_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=fitadam-21&language=en_GB" ></a>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Logo 3D Print Hoodie</h5>
+      <p class="card-text">Novelty Winter Pullover Sportwear with Pocket</p>
+      <a href="https://www.amazon.co.uk/gp/product/B081V2P7FR/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=fitadam-21&linkId=9bf7fa4709be854a50e7902625ea993a&language=en_GB" class="btn btn-primary mt-auto">Go to Amazon</a>
+    </div>
   </div>
-
-
-
-  {% empty %}
-  <li>No posts have been added yet.</li>
-  {% endfor %}
-
+  
+  
+  <div class="card text-white bg-dark" style="width: 18rem;">
+    <a href="https://www.amazon.co.uk/gp/product/B07NSCMKDH/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=fitadam-21&linkId=6388205e7400d97eb16a2a2a863de8d6&language=en_GB" target="_blank"><img class="card-img-top" src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B07NSCMKDH&Format=_SL250_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=fitadam-21&language=en_GB" ></a>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Tesla Inspired Cap</h5>
+      <p class="card-text">Professionally Embroidered in The UK
+        100% Cotton Drill
+        Cotton
+        Rip size adjuster</p>
+      <a href="https://www.amazon.co.uk/gp/product/B07NSCMKDH/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=fitadam-21&linkId=7ca771bcbb54563733885e8862c02e1c&language=en_GB" class="btn btn-primary mt-auto">Go to Amazon</a>
+    </div>
+  </div>
+  
+  <div class="card text-white bg-dark" style="width: 18rem;">
+    <a href="https://www.amazon.co.uk/gp/product/B08528C8VH/ref=as_li_ss_il?ie=UTF8&linkCode=li3&tag=fitadam-21&linkId=1c86bec63cecd8238de0fe60d2c2caba&language=en_GB" target="_blank"><img class="card-img-top"  src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08528C8VH&Format=_SL250_&ID=AsinImage&MarketPlace=GB&ServiceVersion=20070822&WS=1&tag=fitadam-21&language=en_GB" ></a>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title">Hot Wheels Tesla Model 3</h5>
+      <p class="card-text">2020 Metallic Grey 9/10 Factory Fresh 112/250 (Short Card)</p>
+      <a href="https://www.amazon.co.uk/gp/product/B08528C8VH/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=fitadam-21&linkId=d5d6999c0a337805f4275f6935f95e7a&language=en_GB" class="btn btn-primary mt-auto">Go to Amazon</a>
+    </div>
+  </div>
 </div>
 
+</div>
+{% for post in posts %}
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div class="col p-4 d-flex flex-column position-static">
+    
+    <strong class="d-inline-block mb-2 text-primary">{{ post.owner }}</strong>
+    <h3 class="mb-0">{{ post.title }}</a></h3>
+    <div class="mb-1 text-muted">{{ post.date_added }}</div>
+    <p class="card-text mb-auto">{{ post.text|truncatewords:30}}</p>
+    <a href="{% url 'blogs:post' post.id %}" class="stretched-link">Continue reading</a>
+  </div>
+  
+</div>
+
+</div>
+{% empty %}
+  <li>No posts have been added yet.</li>
+{% endfor %}
 
 
 {% endblock content %}
